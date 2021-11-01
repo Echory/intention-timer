@@ -1,0 +1,27 @@
+*{
+  font-family: "Monsterrat", sans-serif;
+  margin: 0;
+}
+
+/* header */
+header {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  background-color: #46424D;
+}
+
+h1 {
+  color: #FFF;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+/* Form Section */
+body {
+  background-color: #2B2733;
+}
+
+.new-activity {
+  
+}
