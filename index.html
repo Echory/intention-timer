@@ -10,33 +10,34 @@
     <header>
       <h1>INTENTION TIMER</h1>
       </header>
-
-    <section>
-      <h2 class="new-activity">New Activity</h2>
-      <form>
-        <p>Select a category:</p>
-        <div>
-          <button>Study</button>
-          <button>Meditate</button>
-          <button>Exercise</button>
-        </div>
-        <div>
-          <label for="accomplish">What would you like to accomplish during this time?</label>
-          <input type="text" id="" name="">
-        </div>
-        <div>
-          <label for="minutes">Minutes</label>
-          <input type="text" id="" name="">
-          <label for="seconds">Seconds</label>
-          <input type="text" id="" name="">
-        </div>
-        <button>Start Activity</button>
-      </form>
-    </section>
-    <section>
+    <section class="main-body">
+      <section class="form-section">
+        <h2 class="new-activity">New Activity</h2>
+        <form class="form">
+          <p class="select-category">Select a category:</p>
+          <div>
+            <button>Study</button>
+            <button>Meditate</button>
+            <button>Exercise</button>
+          </div>
+          <div>
+            <label for="accomplish">What would you like to accomplish during this time?</label>
+            <input type="text" id="" name="">
+          </div>
+          <div>
+            <label for="minutes">Minutes</label>
+            <input type="text" id="" name="">
+            <label for="seconds">Seconds</label>
+            <input type="text" id="" name="">
+          </div>
+          <button>Start Activity</button>
+        </form>
+      </section>
+    <section class="activities-section">
       <h2>Past Activities</h2>
       <p>You haven't logged any activities yet.</p>
       <p>Complete the form to the left to get started!</p>
+    </section>
     </section>
     <script type="text/javascript" src="Activity.js">
     </script>
