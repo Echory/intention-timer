@@ -4,6 +4,9 @@
 }
 
 /* header */
+.hidden {
+  display: none;
+}
 
 header {
   display: flex;
@@ -114,12 +117,24 @@ input {
 .study,
 .meditate,
 .exercise {
-  padding: 10px 25px;
+  padding: 20px 45px;
   background-color: #46424D;
   border-color: white;
   color: #CBC9CF;
   border-radius: 4px;
 }
+
+img {
+  width: 30px;
+  height: 30px;
+}
+/* .study {
+  background-image: url("assests/study.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px;
+  background-position-y: center;
+} */
 
 /* Past Activities Section */
 
@@ -127,4 +142,5 @@ input {
   width: 40%;
   color: #CBC9CF;
   border-left: 2px solid #46424D;
+  
 }
