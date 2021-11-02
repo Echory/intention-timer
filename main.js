@@ -10,13 +10,22 @@ var meditatePlain = document.querySelector('.meditate-plain');
 var meditateActive = document.querySelector('.meditate-active');
 var exercisePlain = document.querySelector('.exercise-plain');
 var exerciseActive = document.querySelector('.exercise-active');
-
+var startActivityBtn = document.querySelector('.activity-button');
+var accomplishInput = document.querySelector('.accomplish-input')
+var errorMessage = document.querySelector('.error')
 //EVENT LISTENERS//
 studyBtn.addEventListener('click', activateColorStudy);
 meditateBtn.addEventListener('click', activateColorMeditate);
 exerciseBtn.addEventListener('click', activateColorExercise);
+startActivityBtn.addEventListener('click', showErrorMessage)
 
 //FUNCTIONS//
+function showErrorMessage() {
+  event.preventDefault();
+    if(accomplishInput.value === '')
+    errorMessage.classList.remove('hidden');
+}
+
 function activateColorStudy() {
   event.preventDefault();
     studyPlain.classList.add('hidden');
@@ -34,4 +43,3 @@ function activateColorStudy() {
     exercisePlain.classList.add('hidden');
     exerciseActive.classList.remove('hidden');
   }
-
