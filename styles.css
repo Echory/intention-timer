@@ -4,6 +4,7 @@
 }
 
 /* header */
+
 header {
   display: flex;
   justify-content: center;
@@ -20,6 +21,8 @@ h1 {
 /* Form Section */
 body {
   background-color: #2B2733;
+  height: 100%;
+  width: 100%;
 }
 
 .main-body {
@@ -35,23 +38,93 @@ body {
 
 .form-section {
   width: 60%;
+  height: 80%;
 }
 
 .form {
   background-color: #46424D;
   margin: 20px;
+  height: 70vh;
 }
 
 .select-category {
   color: #CBC9CF;
   padding-top: 30px;
   padding-bottom: 10px;
-  margin-left: 20px;
+  margin-left: 80px;
+}
 
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 50px;
+}
+
+.activity-button {
+  background-color: #CDC9CF;
+  border: none;
+  color: #46424D;
+  padding: 5px 20px;
+  border-radius: 3px;
+  font-weight: 300;
+  margin-left: 600px;
+}
+
+.accomplish-and-input,
+.minutes-and-input {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+}
+
+.seconds-and-input {
+  margin-top: 15px;
+  margin-left: 50px;
+}
+
+.minutes-and-seconds {
+  display: flex;
+}
+
+.accomplish-input {
+  width: 80%;
+  margin-left: 80px;
+  padding-top: 20px;
+}
+
+.minutes-input {
+  margin-left: 80px;
+  width: 80%;
+}
+
+.accomplish,
+.minutes,
+.seconds {
+  color: #CBC9CF;
+  margin-left: 80px;
+}
+
+input {
+  outline: 0;
+  border: 0px solid #CBC9CF;
+  background-color: transparent;
+  border-bottom-width: 1px;
+}
+
+.study,
+.meditate,
+.exercise {
+  padding: 10px 25px;
+  background-color: #46424D;
+  border-color: white;
+  color: #CBC9CF;
+  border-radius: 4px;
 }
 
 /* Past Activities Section */
 
 .activities-section {
   width: 40%;
+  color: #CBC9CF;
+  border-left: 2px solid #46424D;
 }
