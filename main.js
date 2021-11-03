@@ -37,8 +37,13 @@ function showErrorMessage() {
 
 function activateColorStudy() {
   event.preventDefault();
-    studyPlain.classList.add('hidden');
-    studyActive.classList.remove('hidden');
+    // studyBtn.innerHTML = ``
+    // studyPlain.classList.add('hidden');
+    // studyActive.classList.remove('hidden');
+    studyBtn.innerHTML += `<button class="study" style= "border-color: #B3FD78">
+      <img class="study-plain hidden" src="assests/study.svg">
+      <img class="study-active" src="assests/study-active.svg">
+      Study</button>`
   }
 
   function activateColorMeditate() {
