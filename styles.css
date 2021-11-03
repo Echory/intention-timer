@@ -47,7 +47,7 @@ body {
 .form {
   background-color: #46424D;
   margin: 20px;
-  height: 70vh;
+  height: 90vh;
 }
 
 .select-category {
@@ -74,19 +74,21 @@ body {
 }
 
 .accomplish-and-input,
-.minutes-and-input {
+.minutes-and-input,
+.seconds-and-input {
   display: flex;
   flex-direction: column;
   padding-bottom: 40px;
 }
 
-.seconds-and-input {
+/* .seconds-and-input {
   margin-top: 15px;
   margin-left: 50px;
-}
+} */
 
 .minutes-and-seconds {
   display: flex;
+  justify-content: space-between;
 }
 
 .accomplish-input {
@@ -98,6 +100,10 @@ body {
 .minutes-input {
   margin-left: 80px;
   width: 80%;
+}
+
+.seconds-input {
+  margin-right: 80px;
 }
 
 .accomplish,
@@ -142,5 +148,5 @@ img {
   width: 40%;
   color: #CBC9CF;
   border-left: 2px solid #46424D;
-  
+
 }
