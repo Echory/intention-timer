@@ -12,7 +12,12 @@ var exercisePlain = document.querySelector('.exercise-plain');
 var exerciseActive = document.querySelector('.exercise-active');
 var startActivityBtn = document.querySelector('.activity-button');
 var accomplishInput = document.querySelector('.accomplish-input')
-var errorMessage = document.querySelector('.error')
+var minutesInput = document.querySelector('.minutes-input')
+var secondsInput = document.querySelector('.seconds-input')
+var accomplishErrorMessage = document.querySelector('.accomplish-error')
+var minutesErrorMessage = document.querySelector('.minutes-error')
+var secondsErrorMessage = document.querySelector('.seconds-error')
+
 //EVENT LISTENERS//
 studyBtn.addEventListener('click', activateColorStudy);
 meditateBtn.addEventListener('click', activateColorMeditate);
@@ -23,7 +28,11 @@ startActivityBtn.addEventListener('click', showErrorMessage)
 function showErrorMessage() {
   event.preventDefault();
     if(accomplishInput.value === '')
-    errorMessage.classList.remove('hidden');
+    accomplishErrorMessage.classList.remove('hidden');
+    if(minutesInput.value === '')
+    minutesErrorMessage.classList.remove('hidden');
+    if(secondsInput.value === '')
+    secondsErrorMessage.classList.remove('hidden');
 }
 
 function activateColorStudy() {
