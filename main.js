@@ -29,7 +29,6 @@ studyBtn.addEventListener('click', activateColorStudy);
 meditateBtn.addEventListener('click', activateColorMeditate);
 exerciseBtn.addEventListener('click', activateColorExercise);
 startActivityBtn.addEventListener('click', showTimer);
-activitySection.addEventListener('click', showErrorMessage);
 
 //FUNCTIONS//
 function show(element) {
@@ -41,20 +40,29 @@ element.classList.add('hidden');
 }
  
 function showErrorMessage() {
+  var showError = false
   event.preventDefault();
-    if(accomplishInput.value === '')
-    accomplishErrorMessage.classList.remove('hidden');
-    if(minutesInput.value === '')
-    minutesErrorMessage.classList.remove('hidden');
-    if(secondsInput.value === '')
-    secondsErrorMessage.classList.remove('hidden');
+    if(accomplishInput.value === '') {
+      showError = true;
+      accomplishErrorMessage.classList.remove('hidden');
+    }
+    if(minutesInput.value === '') {
+      showError = true;
+      minutesErrorMessage.classList.remove('hidden');
+    }
+    if(secondsInput.value === '') {
+      showError = true;
+      secondsErrorMessage.classList.remove('hidden');
+    }
+    return showError
 }
 
 function showTimer(){
-  event.preventDefault();
-    showErrorMessage();
+  if(!showErrorMessage()) {
+    event.preventDefault();
     hide(formView);
     show(timerView);
+  }
 }
 
 function activateColorStudy() {
