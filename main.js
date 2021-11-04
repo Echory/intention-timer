@@ -17,6 +17,7 @@ var secondsInput = document.querySelector('.seconds-input')
 var accomplishErrorMessage = document.querySelector('.accomplish-error')
 var minutesErrorMessage = document.querySelector('.minutes-error')
 var secondsErrorMessage = document.querySelector('.seconds-error')
+var studyBtnColor = document.querySelector('.study-button')
 
 //EVENT LISTENERS//
 studyBtn.addEventListener('click', activateColorStudy);
@@ -37,13 +38,13 @@ function showErrorMessage() {
 
 function activateColorStudy() {
   event.preventDefault();
-    // studyBtn.innerHTML = ``
+    studyBtnColor.innerHTML = ``
     // studyPlain.classList.add('hidden');
     // studyActive.classList.remove('hidden');
-    studyBtn.innerHTML += `<button class="study" style= "border-color: #B3FD78">
+    studyBtnColor.innerHTML += `<div class="study-button"><button class="study" style= "border-color: #B3FD78">
       <img class="study-plain hidden" src="assests/study.svg">
       <img class="study-active" src="assests/study-active.svg">
-      Study</button>`
+      Study</button></div>`
   }
 
   function activateColorMeditate() {
