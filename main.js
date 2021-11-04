@@ -1,6 +1,6 @@
 // When button is clicked, both icon and outline change color to indicate they have been selected
 
-//VARIABLES//
+//QUERY SELECTORS//
 var studyBtn = document.querySelector('.study');
 var meditateBtn = document.querySelector('.meditate');
 var exerciseBtn = document.querySelector('.exercise');
@@ -20,14 +20,26 @@ var secondsErrorMessage = document.querySelector('.seconds-error');
 var studyBtnColor = document.querySelector('.study-button');
 var meditateBtnColor = document.querySelector('.meditate-button');
 var exerciseBtnColor = document.querySelector('.exercise-button');
+var formView = document.querySelector('.form-section');
+var timerView = document.querySelector('.timer-view');
+var activitySection = document.querySelector('.activities-section');
 
 //EVENT LISTENERS//
 studyBtn.addEventListener('click', activateColorStudy);
 meditateBtn.addEventListener('click', activateColorMeditate);
 exerciseBtn.addEventListener('click', activateColorExercise);
-startActivityBtn.addEventListener('click', showErrorMessage)
+startActivityBtn.addEventListener('click', showTimer);
+activitySection.addEventListener('click', showErrorMessage);
 
 //FUNCTIONS//
+function show(element) {
+element.classList.remove('hidden');
+}
+
+function hide(element) {
+element.classList.add('hidden');
+}
+ 
 function showErrorMessage() {
   event.preventDefault();
     if(accomplishInput.value === '')
@@ -36,6 +48,13 @@ function showErrorMessage() {
     minutesErrorMessage.classList.remove('hidden');
     if(secondsInput.value === '')
     secondsErrorMessage.classList.remove('hidden');
+}
+
+function showTimer(){
+  event.preventDefault();
+    showErrorMessage();
+    hide(formView);
+    show(timerView);
 }
 
 function activateColorStudy() {
