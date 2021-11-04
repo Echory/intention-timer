@@ -18,6 +18,7 @@ var accomplishErrorMessage = document.querySelector('.accomplish-error')
 var minutesErrorMessage = document.querySelector('.minutes-error')
 var secondsErrorMessage = document.querySelector('.seconds-error')
 var studyBtnColor = document.querySelector('.study-button')
+var meditateBtnColor = document.querySelector('.meditate-button')
 
 //EVENT LISTENERS//
 studyBtn.addEventListener('click', activateColorStudy);
@@ -49,8 +50,13 @@ function activateColorStudy() {
 
   function activateColorMeditate() {
     event.preventDefault();
-    meditatePlain.classList.add('hidden');
-    meditateActive.classList.remove('hidden');
+    meditateBtnColor.innerHTML = ``
+    meditateBtnColor.innerHTML += `<div class="meditate-button">
+    <button class="meditate" style= "color=#C278FD" "border-color: #C278FD">
+      <img class="meditate-plain hidden" src="assests/meditate.svg">
+      <img class="meditate-active " src="assests/meditate-active.svg">
+      Meditate</button></div>`
+
   }
 
   function activateColorExercise() {
