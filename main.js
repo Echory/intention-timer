@@ -59,8 +59,8 @@ function showErrorMessage() {
 }
 
 function showTimer() {
+  event.preventDefault();
   if(!showErrorMessage()) {
-    event.preventDefault();
     hide(formView);
     show(timerView);
     var id = Date.now();

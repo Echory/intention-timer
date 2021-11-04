@@ -144,6 +144,26 @@ span {
   height: 10px;
 }
 
+/* Timer View Section */
+
+.timer-view {
+  width: 60%;
+  height: 80%;
+}
+
+.timer-container {
+  background-color: #46424D;
+  margin: 20px;
+  height: 90vh;
+}
+
+.start-button {
+  background-color: #46424D;
+  border: white;
+  border-radius: 50%;
+}
+
+
 /* Past Activities Section */
 
 .activities-section {
