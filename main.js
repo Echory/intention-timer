@@ -11,14 +11,15 @@ var meditateActive = document.querySelector('.meditate-active');
 var exercisePlain = document.querySelector('.exercise-plain');
 var exerciseActive = document.querySelector('.exercise-active');
 var startActivityBtn = document.querySelector('.activity-button');
-var accomplishInput = document.querySelector('.accomplish-input')
-var minutesInput = document.querySelector('.minutes-input')
-var secondsInput = document.querySelector('.seconds-input')
-var accomplishErrorMessage = document.querySelector('.accomplish-error')
-var minutesErrorMessage = document.querySelector('.minutes-error')
-var secondsErrorMessage = document.querySelector('.seconds-error')
-var studyBtnColor = document.querySelector('.study-button')
-var meditateBtnColor = document.querySelector('.meditate-button')
+var accomplishInput = document.querySelector('.accomplish-input');
+var minutesInput = document.querySelector('.minutes-input');
+var secondsInput = document.querySelector('.seconds-input');
+var accomplishErrorMessage = document.querySelector('.accomplish-error');
+var minutesErrorMessage = document.querySelector('.minutes-error');
+var secondsErrorMessage = document.querySelector('.seconds-error');
+var studyBtnColor = document.querySelector('.study-button');
+var meditateBtnColor = document.querySelector('.meditate-button');
+var exerciseBtnColor = document.querySelector('.exercise-button');
 
 //EVENT LISTENERS//
 studyBtn.addEventListener('click', activateColorStudy);
@@ -39,9 +40,7 @@ function showErrorMessage() {
 
 function activateColorStudy() {
   event.preventDefault();
-    studyBtnColor.innerHTML = ``
-    // studyPlain.classList.add('hidden');
-    // studyActive.classList.remove('hidden');
+    studyBtnColor.innerHTML = ``;
     studyBtnColor.innerHTML += `<div class="study-button"><button class="study" style= "border-color: #B3FD78">
       <img class="study-plain hidden" src="assests/study.svg">
       <img class="study-active" src="assests/study-active.svg">
@@ -50,17 +49,22 @@ function activateColorStudy() {
 
   function activateColorMeditate() {
     event.preventDefault();
-    meditateBtnColor.innerHTML = ``
+    meditateBtnColor.innerHTML = ``;
     meditateBtnColor.innerHTML += `<div class="meditate-button">
-    <button class="meditate" style= "color=#C278FD" "border-color: #C278FD">
+    <button class="meditate" style= "border-color: #C278FD">
       <img class="meditate-plain hidden" src="assests/meditate.svg">
       <img class="meditate-active " src="assests/meditate-active.svg">
       Meditate</button></div>`
-
   }
-
+ 
   function activateColorExercise() {
     event.preventDefault();
-    exercisePlain.classList.add('hidden');
-    exerciseActive.classList.remove('hidden');
+    exerciseBtnColor.innerHTML = ``;
+    exerciseBtnColor.innerHTML += `<div class="exercise-button">
+    <button class="exercise" style= "border-color: #FD8078">
+      <img class="exercise-plain hidden" src="assests/exercise.svg">
+      <img class="exercise-active" src="assests/exercise-active.svg">
+    Exercise
+  </button>
+  </div>`
   }
