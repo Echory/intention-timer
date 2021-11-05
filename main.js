@@ -23,14 +23,18 @@ var exerciseBtnColor = document.querySelector('.exercise-button');
 var formView = document.querySelector('.form-section');
 var timerView = document.querySelector('.timer-view');
 var activitySection = document.querySelector('.activities-section');
-var descriptionCountdown = document.querySelector('.description-countdown')
+var descriptionCountdown = document.querySelector('.description-countdown');
+var startTimerBtn = document.querySelector('.start-button');
+
 var currentActivity = new Activity();
+var time = minutesInput.value * 60 + secondsInput.value;
 var category;
 //EVENT LISTENERS//
 studyBtn.addEventListener('click', activateColorStudy);
 meditateBtn.addEventListener('click', activateColorMeditate);
 exerciseBtn.addEventListener('click', activateColorExercise);
 startActivityBtn.addEventListener('click', showTimer);
+startTimerBtn.addEventListener('click', startTimer);
 
 //FUNCTIONS//
 function show(element) {
@@ -39,6 +43,10 @@ element.classList.remove('hidden');
 
 function hide(element) {
 element.classList.add('hidden');
+}
+
+function startTimer() {
+
 }
 
 function showErrorMessage() {
@@ -65,9 +73,15 @@ function showTimer() {
     hide(formView);
     show(timerView);
     var id = Date.now();
+    var minutes = Math.floor(time / 60);
+    var seconds = time % 60;
+    //check how innerHTML is working because 0 is showing but not the correct inputs
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    // timerTime.innerHTML = ``;
+    time --;
     currentActivity = new Activity(category, accomplishInput.value, minutesInput.value, secondsInput.value, id)
     descriptionCountdown.innerHTML = ``
-    descriptionCountdown.innerHTML += `<p class="timer-category">${accomplishInput.value}</p><p class="timer-time">${minutesInput.value}:${secondsInput.value}</p>`
+    descriptionCountdown.innerHTML += `<p class="timer-category">${accomplishInput.value}</p><p class="timer-time">${minutes}:${seconds}</p>`
   }
 }
 

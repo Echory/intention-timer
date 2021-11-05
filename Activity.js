@@ -9,6 +9,7 @@ class Activity {
   }
   countdown() {
     //begin a timer that counts down by seconds from input time
+    setInterval(startTimer, 1000);
   }
   markComplete() {
     // when timer is done, change time display to say complete
