@@ -144,6 +144,59 @@ span {
   height: 10px;
 }
 
+/* Timer View Section */
+
+.timer-view {
+  width: 60%;
+  height: 80%;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #46424D;
+  margin: 20px;
+  height: 90vh;
+}
+
+.timer-category {
+  font-weight: 300;
+  font-size: 25px;
+  color: white;
+}
+
+.timer-time {
+  font-size: 70px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.current-activity {
+  color: #CBC9CF;
+  font-weight: 300;
+  margin-left: 20px;
+  padding-top: 15px;
+}
+
+.description-countdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-button {
+  background-color: #46424D;
+  color: white;
+  height: 200px;
+  width: 200px;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+
 /* Past Activities Section */
 
 .activities-section {

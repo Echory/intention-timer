@@ -23,7 +23,9 @@ var exerciseBtnColor = document.querySelector('.exercise-button');
 var formView = document.querySelector('.form-section');
 var timerView = document.querySelector('.timer-view');
 var activitySection = document.querySelector('.activities-section');
-
+var descriptionCountdown = document.querySelector('.description-countdown')
+var currentActivity = new Activity();
+var category;
 //EVENT LISTENERS//
 studyBtn.addEventListener('click', activateColorStudy);
 meditateBtn.addEventListener('click', activateColorMeditate);
@@ -38,7 +40,7 @@ element.classList.remove('hidden');
 function hide(element) {
 element.classList.add('hidden');
 }
- 
+
 function showErrorMessage() {
   var showError = false
   event.preventDefault();
@@ -57,16 +59,21 @@ function showErrorMessage() {
     return showError
 }
 
-function showTimer(){
+function showTimer() {
+  event.preventDefault();
   if(!showErrorMessage()) {
-    event.preventDefault();
     hide(formView);
     show(timerView);
+    var id = Date.now();
+    currentActivity = new Activity(category, accomplishInput.value, minutesInput.value, secondsInput.value, id)
+    descriptionCountdown.innerHTML = ``
+    descriptionCountdown.innerHTML += `<p class="timer-category">${accomplishInput.value}</p><p class="timer-time">${minutesInput.value}:${secondsInput.value}</p>`
   }
 }
 
 function activateColorStudy() {
   event.preventDefault();
+    category = studyBtn.value
     studyBtnColor.innerHTML = ``;
     studyBtnColor.innerHTML += `<div class="study-button"><button class="study" style= "border-color: #B3FD78">
       <img class="study-plain hidden" src="assests/study.svg">
@@ -83,9 +90,10 @@ function activateColorStudy() {
       <img class="meditate-active " src="assests/meditate-active.svg">
       Meditate</button></div>`
   }
- 
+
   function activateColorExercise() {
     event.preventDefault();
+    var category = "Exercise";
     exerciseBtnColor.innerHTML = ``;
     exerciseBtnColor.innerHTML += `<div class="exercise-button">
     <button class="exercise" style= "border-color: #FD8078">
