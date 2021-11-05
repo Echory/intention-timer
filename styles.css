@@ -61,6 +61,8 @@ body {
   display: flex;
   justify-content: space-around;
   padding-bottom: 50px;
+  width: 85%;
+  margin-left: 53px;
 }
 
 .activity-button {
@@ -92,18 +94,19 @@ body {
 }
 
 .accomplish-input {
-  width: 80%;
+  width: 610px;
   margin-left: 80px;
   padding-top: 20px;
 }
 
 .minutes-input {
   margin-left: 80px;
-  width: 80%;
+  width: 250px;
 }
 
 .seconds-input {
-  margin-right: 80px;
+  margin-right: 120px;
+  width: 250px;
 }
 
 .accomplish,
@@ -135,9 +138,18 @@ img {
   height: 30px;
 }
 
-span {
+.accomplish-error,
+.minutes-error {
   color: #EFB7EC;
+  margin-left: 80px;
 }
+
+.seconds-error {
+  color: #EFB7EC;
+  margin-right: 200px;
+}
+
+
 
 .warning-img {
   width: 10px;
@@ -222,5 +234,20 @@ span {
   width: 40%;
   color: #CBC9CF;
   border-left: 2px solid #46424D;
+}
 
+.past-activities {
+  font-weight: 300;
+  margin-left: 15px;
+  padding: 20px;
+}
+
+.no-activities {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-log-activity {
+  padding: 6px;
 }
