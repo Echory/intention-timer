@@ -24,10 +24,11 @@ var formView = document.querySelector('.form-section');
 var timerView = document.querySelector('.timer-view');
 var activitySection = document.querySelector('.activities-section');
 var descriptionCountdown = document.querySelector('.description-countdown');
-var startTimerBtn = document.querySelector('.start-button');
+var greenBtn = document.querySelector('.green-button');
+var purpleBtn = document.querySelector('.purple-button');
+var redBtn = document.querySelector('.red-button');
 
 var currentActivity = new Activity();
-var time = minutesInput.value * 60 + secondsInput.value;
 var category;
 //EVENT LISTENERS//
 studyBtn.addEventListener('click', activateColorStudy);
@@ -67,27 +68,41 @@ function showErrorMessage() {
     return showError
 }
 
+function changeButtonColor() {
+  if(category === studyBtn.value) {
+   show(greenBtn);
+  }
+  if(category === meditateBtn.value) {
+    show(purpleBtn);
+  }
+  if(category === exerciseBtn.value) {
+    show(redBtn);
+  }
+}
+
 function showTimer() {
   event.preventDefault();
   if(!showErrorMessage()) {
     hide(formView);
     show(timerView);
     var id = Date.now();
+    var time = parseInt(minutesInput.value) * 60 + parseInt(secondsInput.value);
     var minutes = Math.floor(time / 60);
     var seconds = time % 60;
-    //check how innerHTML is working because 0 is showing but not the correct inputs
-    seconds = seconds < 10 ? '0' + seconds : seconds;
-    // timerTime.innerHTML = ``;
-    time --;
-    currentActivity = new Activity(category, accomplishInput.value, minutesInput.value, secondsInput.value, id)
+    currentActivity = new Activity(category, accomplishInput.value, minutesInput.value, secondsInput.value, id);
+    var secondsColon = seconds < 10 ? '0' + seconds : seconds;
+    // time --;
+   
     descriptionCountdown.innerHTML = ``
-    descriptionCountdown.innerHTML += `<p class="timer-category">${accomplishInput.value}</p><p class="timer-time">${minutes}:${seconds}</p>`
+    descriptionCountdown.innerHTML += `<p class="timer-category">${accomplishInput.value}</p><p class="timer-time">${minutes}:${secondsColon}</p>`
+   
+    changeButtonColor();
   }
 }
 
 function activateColorStudy() {
   event.preventDefault();
-    category = studyBtn.value
+    category = studyBtn.value;
     studyBtnColor.innerHTML = ``;
     studyBtnColor.innerHTML += `<div class="study-button"><button class="study" style= "border-color: #B3FD78">
       <img class="study-plain hidden" src="assests/study.svg">
@@ -97,6 +112,7 @@ function activateColorStudy() {
 
   function activateColorMeditate() {
     event.preventDefault();
+    category = meditateBtn.value;
     meditateBtnColor.innerHTML = ``;
     meditateBtnColor.innerHTML += `<div class="meditate-button">
     <button class="meditate" style= "border-color: #C278FD">
@@ -107,7 +123,7 @@ function activateColorStudy() {
 
   function activateColorExercise() {
     event.preventDefault();
-    var category = "Exercise";
+    category = exerciseBtn.value;
     exerciseBtnColor.innerHTML = ``;
     exerciseBtnColor.innerHTML += `<div class="exercise-button">
     <button class="exercise" style= "border-color: #FD8078">
