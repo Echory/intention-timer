@@ -158,7 +158,7 @@ span {
   align-items: center;
   background-color: #46424D;
   margin: 20px;
-  height: 90vh;
+  height: 80vh;
 }
 
 .timer-category {
@@ -187,14 +187,33 @@ span {
   align-items: center;
 }
 
-.start-button {
+.green-button {
   background-color: #46424D;
   color: white;
   height: 200px;
   width: 200px;
-  border: 2px solid white;
+  border: 2px solid #B3FD78;
   border-radius: 50%;
 }
+
+.purple-button {
+  background-color: #46424D;
+  color: white;
+  height: 200px;
+  width: 200px;
+  border: 2px solid #C278FD;
+  border-radius: 50%;
+}
+
+.red-button {
+  background-color: #46424D;
+  color: white;
+  height: 200px;
+  width: 200px;
+  border: 2px solid red;
+  border-radius: 50%;
+}
+
 
 
 /* Past Activities Section */
