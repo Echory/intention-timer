@@ -42,18 +42,18 @@
             <label class="accomplish" for="accomplish">What would you like to accomplish during this time?</label>
             <input class="accomplish-input" type="text" id="" name="">
             <span
-              class="accomplish-error hidden"><img class="warning-img" src="assests/warning.svg">This is an error</span>
+              class="accomplish-error hidden"><img class="warning-img" src="assests/warning.svg"> A description is required.</span>
           </div>
           <div class="minutes-and-seconds">
             <div class="minutes-and-input">
               <label class="minutes" for="minutes">Minutes</label>
               <input class="minutes-input" type="number" id="" name="">
-              <span class="minutes-error hidden"><img class="warning-img" src="assests/warning.svg">This is an error</span>
+              <span class="minutes-error hidden"><img class="warning-img" src="assests/warning.svg"> A description is required.</span>
             </div>
             <div class="seconds-and-input">
               <label class="seconds" for="seconds">Seconds</label>
               <input class="seconds-input" type="number" id="" name="">
-              <span class="seconds-error hidden"><img class="warning-img" src="assests/warning.svg">This is an error</span>
+              <span class="seconds-error hidden"><img class="warning-img" src="assests/warning.svg"> A description is required.</span>
             </div>
           </div>
           <button class="activity-button">START ACTIVITY</button>
@@ -62,17 +62,20 @@
       <section class="timer-view hidden">
         <h2 class="current-activity">Current Activity</h2>
         <div class="timer-container">
-          <div class="description-countdown">
+          <div class="description-countdown"></div>
+          <div class="start-timer-button">
+            <button class="green-button hidden">START</button>
+            <button class="purple-button hidden">START</button>
+            <button class="red-button hidden">START</button>
           </div>
-          <button class="green-button hidden">START</button>
-          <button class="purple-button hidden">START</button>
-          <button class="red-button hidden">START</button>
         </div>
       </section>
       <section class="activities-section">
-        <h2>Past Activities</h2>
-        <p>You haven't logged any activities yet.</p>
-        <p>Complete the form to the left to get started!</p>
+        <h2 class="past-activities">Past Activities</h2>
+        <div class="no-activities">
+          <p class="no-log-activity">You haven't logged any activities yet.</p>
+          <p class="no-log-activity">Complete the form to the left to get started!</p>
+        </div>
       </section>
     </section>
     <script type="text/javascript" src="Activity.js">

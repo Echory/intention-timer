@@ -27,7 +27,9 @@ var descriptionCountdown = document.querySelector('.description-countdown');
 var greenBtn = document.querySelector('.green-button');
 var purpleBtn = document.querySelector('.purple-button');
 var redBtn = document.querySelector('.red-button');
+var startTimerBtn = document.querySelector('.start-timer-button')
 
+var downCount = setInterval(startTimer, 1000);
 var currentActivity = new Activity();
 var category;
 //EVENT LISTENERS//
@@ -47,7 +49,8 @@ element.classList.add('hidden');
 }
 
 function startTimer() {
-
+  var time = parseInt(minutesInput.value) * 60 + parseInt(secondsInput.value);
+  time--;
 }
 
 function showErrorMessage() {
@@ -91,11 +94,10 @@ function showTimer() {
     var seconds = time % 60;
     currentActivity = new Activity(category, accomplishInput.value, minutesInput.value, secondsInput.value, id);
     var secondsColon = seconds < 10 ? '0' + seconds : seconds;
-    // time --;
-   
+
     descriptionCountdown.innerHTML = ``
     descriptionCountdown.innerHTML += `<p class="timer-category">${accomplishInput.value}</p><p class="timer-time">${minutes}:${secondsColon}</p>`
-   
+
     changeButtonColor();
   }
 }
