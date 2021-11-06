@@ -66,7 +66,7 @@ body {
 }
 
 .activity-button {
-  background-color: #CDC9CF;
+  background-color: white;
   border: none;
   color: #46424D;
   padding: 5px 20px;
@@ -226,6 +226,16 @@ img {
   border-radius: 50%;
 }
 
+.log-activity-btn {
+  background-color: white;
+  border: none;
+  color: #46424D;
+  padding: 5px 50px;
+  border-radius: 3px;
+  font-weight: 300;
+  margin-top: 15px;
+}
+
 
 
 /* Past Activities Section */
@@ -250,4 +260,15 @@ img {
 
 .no-log-activity {
   padding: 6px;
+}
+
+.saved-container {
+  width: 40px;
+  length: 20px;
+  background-color: #46424D;
+
+}
+.saved-category {
+  color: red;
+  font-size: 12px;
 }

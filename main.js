@@ -29,10 +29,11 @@ var purpleBtn = document.querySelector('.purple-button');
 var redBtn = document.querySelector('.red-button');
 var startTimerBtn = document.querySelector('.start-timer-button');
 var logActivityBtn = document.querySelector('.log-activity-btn');
+var savedActivitiesSection = document.querySelector('.no-activities');
 
 
 var currentActivity = new Activity();
-// step 1 make time a global variable set to 0
+var savedActivities = [];
 var time = 0;
 var category;
 //EVENT LISTENERS//
@@ -54,9 +55,18 @@ element.classList.add('hidden');
 }
 
 
-// function logActivity() {
-//
-// }
+function logActivity() {
+  savedActivities.push(currentActivity)
+  savedActivitiesSection.innerHTML = ``;
+  for (var i = 0; i < savedActivitiesSection.length; i++) {
+    savedActivitiesSection.innerHTML += `<div class= "saved-container">
+    <p class= "saved-category">'${currentActivity[i].category}'</p>
+    <p>'${currentActivity[i].minutes}'MIN '${currentActivity[i].seconds}'SECONDS</p>
+    <p>'${currentActivity[i].description}'</p>
+    </div>`
+    console.log(savedActivities);
+  }
+}
 
 function startTimer() {
   time--;
@@ -122,6 +132,7 @@ function showTimer() {
     createTime();
     currentActivity = new Activity(category, accomplishInput.value, minutesInput.value, secondsInput.value, id);
     changeButtonColor();
+    // savedActivities.push(currentActivity)
   }
 }
 // step 3 put all this in a function so we can call it in other funcs
