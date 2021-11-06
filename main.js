@@ -58,11 +58,11 @@ element.classList.add('hidden');
 function logActivity() {
   savedActivities.push(currentActivity)
   savedActivitiesSection.innerHTML = ``;
-  for (var i = 0; i < savedActivitiesSection.length; i++) {
+  for (var i = 0; i < savedActivities.length; i++) {
     savedActivitiesSection.innerHTML += `<div class= "saved-container">
-    <p class= "saved-category">'${currentActivity[i].category}'</p>
-    <p>'${currentActivity[i].minutes}'MIN '${currentActivity[i].seconds}'SECONDS</p>
-    <p>'${currentActivity[i].description}'</p>
+    <p class= "saved-category">'${savedActivities[i].category}'</p>
+    <p>'${savedActivities[i].minutes}'MIN '${savedActivities[i].seconds}'SECONDS</p>
+    <p>'${savedActivities[i].description}'</p>
     </div>`
     console.log(savedActivities);
   }

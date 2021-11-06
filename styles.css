@@ -263,12 +263,14 @@ img {
 }
 
 .saved-container {
-  width: 40px;
-  length: 20px;
+  width: 80%;
+  height: 70px;
+  border-radius: 3px;
+  padding-left: 8px;
   background-color: #46424D;
 
 }
 .saved-category {
-  color: red;
+  color: white;
   font-size: 12px;
 }
