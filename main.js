@@ -27,17 +27,21 @@ var descriptionCountdown = document.querySelector('.description-countdown');
 var greenBtn = document.querySelector('.green-button');
 var purpleBtn = document.querySelector('.purple-button');
 var redBtn = document.querySelector('.red-button');
-var startTimerBtn = document.querySelector('.start-timer-button')
+var startTimerBtn = document.querySelector('.start-timer-button');
+// var completeMessage = document.querySelectorAll('.complete');
 
-var downCount = setInterval(startTimer, 1000);
+
 var currentActivity = new Activity();
+// step 1 make time a global variable set to 0 
+var time = 0;
 var category;
 //EVENT LISTENERS//
 studyBtn.addEventListener('click', activateColorStudy);
 meditateBtn.addEventListener('click', activateColorMeditate);
 exerciseBtn.addEventListener('click', activateColorExercise);
 startActivityBtn.addEventListener('click', showTimer);
-startTimerBtn.addEventListener('click', startTimer);
+startTimerBtn.addEventListener('click', callCountdown);
+
 
 //FUNCTIONS//
 function show(element) {
@@ -48,9 +52,25 @@ function hide(element) {
 element.classList.add('hidden');
 }
 
+// step 5 have timer count down from set time and then clear at 0
 function startTimer() {
-  var time = parseInt(minutesInput.value) * 60 + parseInt(secondsInput.value);
   time--;
+  createTime();
+  if(time === 0 && category === studyBtn.value) {
+    clearInterval(currentActivity.timerId);
+    startTimerBtn.innerHTML = `<button class="green-button complete">YOU CRUSHED IT!</button>`
+  }else if(time === 0 && category === meditateBtn.value) {
+    clearInterval(currentActivity.timerId);
+    startTimerBtn.innerHTML = `<button class="purple-button complete">WOOSAH!</button>`
+  } else if(time === 0 && category === exerciseBtn.value){
+    clearInterval(currentActivity.timerId);
+    startTimerBtn.innerHTML = `<button class="red-button complete">SLAY QUEEN!</button>`
+  }
+}
+
+//step 4 create function that will call coundown so it doesnt keep firing if we call it directly in the other function
+function callCountdown() {
+  currentActivity.countdown();
 }
 
 function showErrorMessage() {
@@ -89,17 +109,20 @@ function showTimer() {
     hide(formView);
     show(timerView);
     var id = Date.now();
-    var time = parseInt(minutesInput.value) * 60 + parseInt(secondsInput.value);
-    var minutes = Math.floor(time / 60);
-    var seconds = time % 60;
+    time = parseInt(minutesInput.value) * 60 + parseInt(secondsInput.value);
+    //step 2 parseInt so we do math on a number
+    createTime();
     currentActivity = new Activity(category, accomplishInput.value, minutesInput.value, secondsInput.value, id);
-    var secondsColon = seconds < 10 ? '0' + seconds : seconds;
-
-    descriptionCountdown.innerHTML = ``
-    descriptionCountdown.innerHTML += `<p class="timer-category">${accomplishInput.value}</p><p class="timer-time">${minutes}:${secondsColon}</p>`
-
     changeButtonColor();
   }
+}
+// step 3 put all this in a function so we can call it in other funcs
+function createTime() {
+  var minutes = Math.floor(time / 60);
+  var seconds = time % 60;
+  var secondsColon = seconds < 10 ? '0' + seconds : seconds;
+  descriptionCountdown.innerHTML = ``
+  descriptionCountdown.innerHTML += `<p class="timer-category">${accomplishInput.value}</p><p class="timer-time">${minutes}:${secondsColon}</p>`
 }
 
 function activateColorStudy() {
