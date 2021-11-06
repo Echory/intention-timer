@@ -30,7 +30,8 @@ var redBtn = document.querySelector('.red-button');
 var startTimerBtn = document.querySelector('.start-timer-button');
 var logActivityBtn = document.querySelector('.log-activity-btn');
 var savedActivitiesSection = document.querySelector('.no-activities');
-
+// Need to figure out how to target this line section
+var line = document.querySelector('.line')
 
 var currentActivity = new Activity();
 var savedActivities = [];
@@ -60,11 +61,16 @@ function logActivity() {
   savedActivitiesSection.innerHTML = ``;
   for (var i = 0; i < savedActivities.length; i++) {
     savedActivitiesSection.innerHTML += `<div class= "saved-container">
-    <p class= "saved-category">'${savedActivities[i].category}'</p>
-    <p>'${savedActivities[i].minutes}'MIN '${savedActivities[i].seconds}'SECONDS</p>
-    <p>'${savedActivities[i].description}'</p>
-    </div>`
-    console.log(savedActivities);
+    <div class="saved-info">
+      <p class= "saved-category">${savedActivities[i].category}</p>
+      <p class="saved-time">${savedActivities[i].minutes} MIN ${savedActivities[i].seconds} SECONDS</p>
+      <p class="saved-description">${savedActivities[i].description}</p>
+    </div>
+    <div class="line-container">
+      <section class="line ${savedActivities[i].category}-line"</section>
+    </div>
+  </div>`
+  // Issue with displaying line
   }
 }
 
