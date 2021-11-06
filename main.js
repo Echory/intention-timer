@@ -29,15 +29,19 @@ var purpleBtn = document.querySelector('.purple-button');
 var redBtn = document.querySelector('.red-button');
 var startTimerBtn = document.querySelector('.start-timer-button')
 
-var downCount = setInterval(startTimer, 1000);
+
+
+// var downCount = setInterval(startTimer, 1000);
 var currentActivity = new Activity();
+var time = 0;
 var category;
 //EVENT LISTENERS//
 studyBtn.addEventListener('click', activateColorStudy);
 meditateBtn.addEventListener('click', activateColorMeditate);
 exerciseBtn.addEventListener('click', activateColorExercise);
 startActivityBtn.addEventListener('click', showTimer);
-startTimerBtn.addEventListener('click', startTimer);
+startTimerBtn.addEventListener('click', callCountdown);
+
 
 //FUNCTIONS//
 function show(element) {
@@ -49,8 +53,15 @@ element.classList.add('hidden');
 }
 
 function startTimer() {
-  var time = parseInt(minutesInput.value) * 60 + parseInt(secondsInput.value);
   time--;
+  createTime();
+  if(time === 0) {
+    clearInterval(currentActivity.timerId);
+  }
+}
+
+function callCountdown() {
+  currentActivity.countdown();
 }
 
 function showErrorMessage() {
@@ -89,17 +100,19 @@ function showTimer() {
     hide(formView);
     show(timerView);
     var id = Date.now();
-    var time = parseInt(minutesInput.value) * 60 + parseInt(secondsInput.value);
-    var minutes = Math.floor(time / 60);
-    var seconds = time % 60;
+    time = parseInt(minutesInput.value) * 60 + parseInt(secondsInput.value);
+    createTime();
     currentActivity = new Activity(category, accomplishInput.value, minutesInput.value, secondsInput.value, id);
-    var secondsColon = seconds < 10 ? '0' + seconds : seconds;
-
-    descriptionCountdown.innerHTML = ``
-    descriptionCountdown.innerHTML += `<p class="timer-category">${accomplishInput.value}</p><p class="timer-time">${minutes}:${secondsColon}</p>`
-
     changeButtonColor();
   }
+}
+
+function createTime() {
+  var minutes = Math.floor(time / 60);
+  var seconds = time % 60;
+  var secondsColon = seconds < 10 ? '0' + seconds : seconds;
+  descriptionCountdown.innerHTML = ``
+  descriptionCountdown.innerHTML += `<p class="timer-category">${accomplishInput.value}</p><p class="timer-time">${minutes}:${secondsColon}</p>`
 }
 
 function activateColorStudy() {
