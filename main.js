@@ -28,11 +28,12 @@ var greenBtn = document.querySelector('.green-button');
 var purpleBtn = document.querySelector('.purple-button');
 var redBtn = document.querySelector('.red-button');
 var startTimerBtn = document.querySelector('.start-timer-button');
-// var completeMessage = document.querySelectorAll('.complete');
+var logActivityBtn = document.querySelector('.log-activity-btn');
+var savedActivitiesSection = document.querySelector('.no-activities');
 
 
 var currentActivity = new Activity();
-// step 1 make time a global variable set to 0 
+var savedActivities = [];
 var time = 0;
 var category;
 //EVENT LISTENERS//
@@ -41,6 +42,7 @@ meditateBtn.addEventListener('click', activateColorMeditate);
 exerciseBtn.addEventListener('click', activateColorExercise);
 startActivityBtn.addEventListener('click', showTimer);
 startTimerBtn.addEventListener('click', callCountdown);
+logActivityBtn.addEventListener('click', logActivity);
 
 
 //FUNCTIONS//
@@ -52,19 +54,35 @@ function hide(element) {
 element.classList.add('hidden');
 }
 
-// step 5 have timer count down from set time and then clear at 0
+
+function logActivity() {
+  savedActivities.push(currentActivity)
+  savedActivitiesSection.innerHTML = ``;
+  for (var i = 0; i < savedActivitiesSection.length; i++) {
+    savedActivitiesSection.innerHTML += `<div class= "saved-container">
+    <p class= "saved-category">'${currentActivity[i].category}'</p>
+    <p>'${currentActivity[i].minutes}'MIN '${currentActivity[i].seconds}'SECONDS</p>
+    <p>'${currentActivity[i].description}'</p>
+    </div>`
+    console.log(savedActivities);
+  }
+}
+
 function startTimer() {
   time--;
   createTime();
   if(time === 0 && category === studyBtn.value) {
     clearInterval(currentActivity.timerId);
     startTimerBtn.innerHTML = `<button class="green-button complete">YOU CRUSHED IT!</button>`
+    show(logActivityBtn)
   }else if(time === 0 && category === meditateBtn.value) {
     clearInterval(currentActivity.timerId);
     startTimerBtn.innerHTML = `<button class="purple-button complete">WOOSAH!</button>`
+    show(logActivityBtn)
   } else if(time === 0 && category === exerciseBtn.value){
     clearInterval(currentActivity.timerId);
     startTimerBtn.innerHTML = `<button class="red-button complete">SLAY QUEEN!</button>`
+    show(logActivityBtn)
   }
 }
 
@@ -114,6 +132,7 @@ function showTimer() {
     createTime();
     currentActivity = new Activity(category, accomplishInput.value, minutesInput.value, secondsInput.value, id);
     changeButtonColor();
+    // savedActivities.push(currentActivity)
   }
 }
 // step 3 put all this in a function so we can call it in other funcs
