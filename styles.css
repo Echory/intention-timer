@@ -264,6 +264,7 @@ img {
 
 .saved-container {
   display: flex;
+  justify-content: space-between;
   width: 80%;
   height: 80px;
   border-radius: 3px;
@@ -277,6 +278,7 @@ img {
   color: white;
   font-size: 18px;
   padding: 2px 0;
+  text-transform: capitalize;
 }
 
 .saved-time {
@@ -292,6 +294,8 @@ img {
   display: flex;
   justify-content: flex-end;
   width: 40px;
+  height: 40px;
+  margin: 5px 5px;
 
 }
 
@@ -301,6 +305,14 @@ img {
   width: 4px;
 }
 
-.study-line {
-  color: #B3FD78;
+.line-study {
+  background-color: #B3FD78;
+}
+
+.line-meditate {
+  background-color: #C278FD;
+}
+
+.line-exercise {
+  background-color: #FD8078;
 }

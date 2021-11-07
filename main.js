@@ -60,18 +60,20 @@ function logActivity() {
   savedActivities.push(currentActivity)
   savedActivitiesSection.innerHTML = ``;
   for (var i = 0; i < savedActivities.length; i++) {
-    savedActivitiesSection.innerHTML += `<div class= "saved-container">
-    <div class="saved-info">
+    savedActivitiesSection.innerHTML += `<section class= "saved-container">
+    <article class="saved-info">
       <p class= "saved-category">${savedActivities[i].category}</p>
       <p class="saved-time">${savedActivities[i].minutes} MIN ${savedActivities[i].seconds} SECONDS</p>
       <p class="saved-description">${savedActivities[i].description}</p>
-    </div>
-    <div class="line-container">
-      <section class="line ${savedActivities[i].category}-line"</section>
-    </div>
-  </div>`
+    </article>
+    <article class="line-container">
+      <div class="line line-${savedActivities[i].category}"></div>
+    </article>
+  </section>`
+  // line = document.getElementById()
   // Issue with displaying line
   }
+  console.log(savedActivities.category)
 }
 
 function startTimer() {
