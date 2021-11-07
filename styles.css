@@ -163,6 +163,21 @@ img {
   height: 80%;
 }
 
+.create-container {
+  width: 60%;
+  height: 80%;
+}
+
+.create-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #46424D;
+  margin: 20px;
+  height: 80vh;
+}
+
 .timer-container {
   display: flex;
   flex-direction: column;
@@ -236,7 +251,15 @@ img {
   margin-top: 15px;
 }
 
-
+.create-new-activity {
+  background-color: white;
+  border: none;
+  color: #46424D;
+  padding: 5px 50px;
+  border-radius: 3px;
+  font-weight: 300;
+  margin-top: 15px;
+}
 
 /* Past Activities Section */
 
@@ -263,12 +286,52 @@ img {
 }
 
 .saved-container {
-  width: 40px;
-  length: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  height: 80px;
+  border-radius: 3px;
+  padding-left: 8px;
   background-color: #46424D;
+  margin-right: 18px;
+  box-shadow: 2px 2px #322F37;
+}
+
+.saved-category {
+  color: white;
+  font-size: 18px;
+  padding: 2px 0;
+  text-transform: capitalize;
+}
+
+.saved-description {
+  padding: 5px 0;
+  font-weight: 300;
+}
+
+.line-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 40px;
+  height: 40px;
+  margin: 5px 5px;
 
 }
-.saved-category {
-  color: red;
-  font-size: 12px;
+
+.line {
+  margin: 5px;
+  border-radius: 5px;
+  width: 4px;
+}
+
+.line-study {
+  background-color: #B3FD78;
+}
+
+.line-meditate {
+  background-color: #C278FD;
+}
+
+.line-exercise {
+  background-color: #FD8078;
 }

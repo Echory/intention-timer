@@ -16,6 +16,9 @@ class Activity {
     // when timer is done, change time display to say complete
   }
   saveToStorage() {
+    var stringifiedArray = JSON.stringify(savedActivities);
+    window.localStorage.setItem('array', stringifiedArray);
+
     //when we click log activity, save to local storage
   }
 }
