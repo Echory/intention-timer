@@ -31,9 +31,8 @@ var startTimerBtn = document.querySelector('.start-timer-button');
 var logActivityBtn = document.querySelector('.log-activity-btn');
 var savedActivitiesSection = document.querySelector('.no-activities');
 var createActivityBtn = document.querySelector('.create-new-activity')
-var createContainer = document.querySelector('.create-container')
-// Need to figure out how to target this line section
-var line = document.querySelector('.line')
+var createContainer = document.querySelector('.create-container');
+var line = document.querySelector('.line');
 
 var currentActivity = new Activity();
 var savedActivities = [];
@@ -46,10 +45,13 @@ exerciseBtn.addEventListener('click', activateColorExercise);
 startActivityBtn.addEventListener('click', showTimer);
 startTimerBtn.addEventListener('click', callCountdown);
 logActivityBtn.addEventListener('click', logActivity);
+createActivityBtn.addEventListener('click', createNewActivity);
 window.addEventListener('DOMContentLoaded', retrieveArray);
 
+retrieveArray();
 
 //FUNCTIONS//
+
 function show(element) {
 element.classList.remove('hidden');
 }
@@ -61,13 +63,29 @@ element.classList.add('hidden');
 function retrieveArray() {
   var retrievedArray = window.localStorage.getItem('array');
   var array = JSON.parse(retrievedArray)
+  if(array.length > 1) {
+    savedActivitiesSection.innerHTML = ``;
+  for (var i = 0; i < savedActivities.length; i++) {
+    savedActivitiesSection.innerHTML += `<section class= "saved-container">
+    <article class="saved-info">
+      <p class= "saved-category">${savedActivities[i].category}</p>
+      <p class="saved-time">${savedActivities[i].minutes} MIN ${savedActivities[i].seconds} SECONDS</p>
+      <p class="saved-description">${savedActivities[i].description}</p>
+    </article>
+    <article class="line-container">
+      <div class="line line-${savedActivities[i].category}"></div>
+    </article>
+  </section>`
+  }
+  }
+  savedActivities = array;
 }
 
-// function createActivityDisplay() {
-//   savedActivities.push(currentActivity);
-//   currentActivity.saveToStorage();
-//   retrieveArray();
-// }
+function createNewActivity() {
+  hide(timerView);
+  hide(createContainer);
+  show(formView);
+}
 
 function logActivity() {
   // createActivityDisplay();
@@ -84,6 +102,7 @@ function logActivity() {
       <div class="line line-${savedActivities[i].category}"></div>
     </article>
   </section>`
+  currentActivity.saveToStorage();
   hide(timerView);
   show(createContainer);
   }
@@ -123,7 +142,7 @@ function showErrorMessage() {
       showError = true;
       minutesErrorMessage.classList.remove('hidden');
     }
-    if(secondsInput.value === '') {
+    if(secondsInput.value === '' || secondsInput.value === '0') {
       showError = true;
       secondsErrorMessage.classList.remove('hidden');
     }

@@ -200,7 +200,9 @@ img {
   margin-bottom: 20px;
 }
 
-.current-activity {
+.current-activity,
+.current-header
+ {
   color: #CBC9CF;
   font-weight: 300;
   margin-left: 20px;
@@ -295,6 +297,7 @@ img {
   background-color: #46424D;
   margin-right: 18px;
   box-shadow: 2px 2px #322F37;
+  margin-top: 10px;
 }
 
 .saved-category {
