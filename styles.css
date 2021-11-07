@@ -47,7 +47,7 @@ body {
 .form {
   background-color: #46424D;
   margin: 20px;
-  height: 90vh;
+  height: 85vh;
 }
 
 .select-category {
@@ -62,7 +62,7 @@ body {
   justify-content: space-around;
   padding-bottom: 50px;
   width: 85%;
-  margin-left: 53px;
+  margin-left: 40px;
 }
 
 .activity-button {
@@ -72,7 +72,7 @@ body {
   padding: 5px 20px;
   border-radius: 3px;
   font-weight: 300;
-  margin-left: 600px;
+  margin-left: 567px;
 }
 
 .accomplish-and-input,
@@ -83,37 +83,37 @@ body {
   padding-bottom: 40px;
 }
 
-/* .seconds-and-input {
-  margin-top: 15px;
-  margin-left: 50px;
-} */
-
 .minutes-and-seconds {
   display: flex;
   justify-content: space-between;
 }
 
 .accomplish-input {
-  width: 610px;
+  width: 620px;
   margin-left: 80px;
-  padding-top: 20px;
+  padding-top: 28px;
 }
 
 .minutes-input {
   margin-left: 80px;
   width: 250px;
-}
+  padding-top: 28px;
+} 
 
 .seconds-input {
   margin-right: 120px;
   width: 250px;
+  padding-top: 28px;
 }
 
 .accomplish,
-.minutes,
-.seconds {
+.minutes{
   color: #CBC9CF;
   margin-left: 80px;
+}
+
+.seconds {
+  color: #CBC9CF;
 }
 
 input {
@@ -126,11 +126,15 @@ input {
 .study,
 .meditate,
 .exercise {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   padding: 20px 45px;
   background-color: #46424D;
   border-color: white;
   color: #CBC9CF;
   border-radius: 4px;
+  width: 150px;
 }
 
 img {
@@ -148,8 +152,6 @@ img {
   color: #EFB7EC;
   margin-right: 200px;
 }
-
-
 
 .warning-img {
   width: 10px;
@@ -175,7 +177,7 @@ img {
   align-items: center;
   background-color: #46424D;
   margin: 20px;
-  height: 80vh;
+  height: 85vh;
 }
 
 .timer-container {
@@ -185,7 +187,7 @@ img {
   align-items: center;
   background-color: #46424D;
   margin: 20px;
-  height: 80vh;
+  height: 85vh;
 }
 
 .timer-category {
@@ -253,14 +255,20 @@ img {
   margin-top: 15px;
 }
 
+.create-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .create-new-activity {
   background-color: white;
   border: none;
   color: #46424D;
-  padding: 5px 50px;
+  padding: 8px 70px;
   border-radius: 3px;
   font-weight: 300;
-  margin-top: 15px;
+  margin-top: 60px;
 }
 
 /* Past Activities Section */
@@ -318,7 +326,6 @@ img {
   width: 40px;
   height: 40px;
   margin: 5px 5px;
-
 }
 
 .line {
