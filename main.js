@@ -30,6 +30,8 @@ var redBtn = document.querySelector('.red-button');
 var startTimerBtn = document.querySelector('.start-timer-button');
 var logActivityBtn = document.querySelector('.log-activity-btn');
 var savedActivitiesSection = document.querySelector('.no-activities');
+var createActivityBtn = document.querySelector('.create-new-activity')
+var createContainer = document.querySelector('.create-container')
 // Need to figure out how to target this line section
 var line = document.querySelector('.line')
 
@@ -44,6 +46,7 @@ exerciseBtn.addEventListener('click', activateColorExercise);
 startActivityBtn.addEventListener('click', showTimer);
 startTimerBtn.addEventListener('click', callCountdown);
 logActivityBtn.addEventListener('click', logActivity);
+window.addEventListener('DOMContentLoaded', retrieveArray);
 
 
 //FUNCTIONS//
@@ -55,9 +58,20 @@ function hide(element) {
 element.classList.add('hidden');
 }
 
+function retrieveArray() {
+  var retrievedArray = window.localStorage.getItem('array');
+  var array = JSON.parse(retrievedArray)
+}
+
+// function createActivityDisplay() {
+//   savedActivities.push(currentActivity);
+//   currentActivity.saveToStorage();
+//   retrieveArray();
+// }
 
 function logActivity() {
-  savedActivities.push(currentActivity)
+  // createActivityDisplay();
+  savedActivities.push(currentActivity);
   savedActivitiesSection.innerHTML = ``;
   for (var i = 0; i < savedActivities.length; i++) {
     savedActivitiesSection.innerHTML += `<section class= "saved-container">
@@ -70,10 +84,9 @@ function logActivity() {
       <div class="line line-${savedActivities[i].category}"></div>
     </article>
   </section>`
-  // line = document.getElementById()
-  // Issue with displaying line
+  hide(timerView);
+  show(createContainer);
   }
-  console.log(savedActivities.category)
 }
 
 function startTimer() {
