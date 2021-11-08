@@ -48,6 +48,8 @@ body {
   background-color: #46424D;
   margin: 20px;
   height: 85vh;
+  box-shadow: 2px 2px #322F37;
+  border-radius: 3px;
 }
 
 .select-category {
@@ -98,7 +100,7 @@ body {
   margin-left: 80px;
   width: 250px;
   padding-top: 28px;
-} 
+}
 
 .seconds-input {
   margin-right: 120px;
@@ -121,6 +123,7 @@ input {
   border: 0px solid #CBC9CF;
   background-color: transparent;
   border-bottom-width: 1px;
+  color: white;
 }
 
 .study,
@@ -146,11 +149,13 @@ img {
 .minutes-error {
   color: #EFB7EC;
   margin-left: 80px;
+  padding-top: 8px;
 }
 
 .seconds-error {
   color: #EFB7EC;
   margin-right: 200px;
+  padding-top: 8px;
 }
 
 .warning-img {
@@ -188,6 +193,8 @@ img {
   background-color: #46424D;
   margin: 20px;
   height: 85vh;
+  box-shadow: 2px 2px #322F37;
+  border-radius: 3px;
 }
 
 .timer-category {
