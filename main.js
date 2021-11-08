@@ -28,7 +28,7 @@ var redBtn = document.querySelector('.red-button');
 var startTimerBtn = document.querySelector('.start-timer-button');
 var logActivityBtn = document.querySelector('.log-activity-btn');
 var savedActivitiesSection = document.querySelector('.no-activities');
-var createActivityBtn = document.querySelector('.create-new-activity')
+var createActivityBtn = document.querySelector('.create-new-activity');
 var createContainer = document.querySelector('.create-container');
 var line = document.querySelector('.line');
 
@@ -65,21 +65,21 @@ function clearInputs() {
 
 function retrieveArray() {
   var retrievedArray = window.localStorage.getItem('array');
-  var array = JSON.parse(retrievedArray)
+  var array = JSON.parse(retrievedArray);
   if(array.length >= 1) {
     savedActivitiesSection.innerHTML = ``;
-  for (var i = 0; i < savedActivities.length; i++) {
-    savedActivitiesSection.innerHTML += `<section class= "saved-container">
-    <article class="saved-info">
-      <p class= "saved-category">${savedActivities[i].category}</p>
-      <p class="saved-time">${savedActivities[i].minutes} MIN ${savedActivities[i].seconds} SECONDS</p>
-      <p class="saved-description">${savedActivities[i].description}</p>
-    </article>
-    <article class="line-container">
-      <div class="line line-${savedActivities[i].category}"></div>
-    </article>
-  </section>`
-  }
+    for (var i = 0; i < savedActivities.length; i++) {
+      savedActivitiesSection.innerHTML += `<section class= "saved-container">
+        <article class="saved-info">
+          <p class= "saved-category">${savedActivities[i].category}</p>
+          <p class="saved-time">${savedActivities[i].minutes} MIN ${savedActivities[i].seconds} SECONDS</p>
+          <p class="saved-description">${savedActivities[i].description}</p>
+        </article>
+        <article class="line-container">
+          <div class="line line-${savedActivities[i].category}"></div>
+        </article>
+      </section>`
+    }
   }
   savedActivities = array;
 };
@@ -92,22 +92,23 @@ function createNewActivity() {
 };
 
 function logActivity() {
+  currentActivity.markComplete();
   savedActivities.push(currentActivity);
   savedActivitiesSection.innerHTML = ``;
   for (var i = 0; i < savedActivities.length; i++) {
     savedActivitiesSection.innerHTML += `<section class= "saved-container">
-    <article class="saved-info">
-      <p class= "saved-category">${savedActivities[i].category}</p>
-      <p class="saved-time">${savedActivities[i].minutes} MIN ${savedActivities[i].seconds} SECONDS</p>
-      <p class="saved-description">${savedActivities[i].description}</p>
-    </article>
-    <article class="line-container">
-      <div class="line line-${savedActivities[i].category}"></div>
-    </article>
-  </section>`
-  currentActivity.saveToStorage();
-  hide(timerView);
-  show(createContainer);
+      <article class="saved-info">
+        <p class= "saved-category">${savedActivities[i].category}</p>
+        <p class="saved-time">${savedActivities[i].minutes} MIN ${savedActivities[i].seconds} SECONDS</p>
+        <p class="saved-description">${savedActivities[i].description}</p>
+      </article>
+      <article class="line-container">
+        <div class="line line-${savedActivities[i].category}"></div>
+      </article>
+    </section>`
+    currentActivity.saveToStorage();
+    hide(timerView);
+    show(createContainer);
   }
 };
 
@@ -117,15 +118,15 @@ function startTimer() {
   if(time === 0 && category === studyBtn.value) {
     clearInterval(currentActivity.timerId);
     startTimerBtn.innerHTML = `<button class="green-button complete">YOU CRUSHED IT!</button>`
-    show(logActivityBtn)
-  }else if(time === 0 && category === meditateBtn.value) {
+    show(logActivityBtn);
+  } else if(time === 0 && category === meditateBtn.value) {
     clearInterval(currentActivity.timerId);
     startTimerBtn.innerHTML = `<button class="purple-button complete">WOOSAH!</button>`
-    show(logActivityBtn)
+    show(logActivityBtn);
   } else if(time === 0 && category === exerciseBtn.value){
     clearInterval(currentActivity.timerId);
     startTimerBtn.innerHTML = `<button class="red-button complete">SLAY QUEEN!</button>`
-    show(logActivityBtn)
+    show(logActivityBtn);
   }
 };
 
@@ -134,7 +135,7 @@ function callCountdown() {
 };
 
 function showErrorMessage() {
-  var showError = false
+  var showError = false;
   event.preventDefault();
     if(accomplishInput.value === '') {
       showError = true;
@@ -144,7 +145,7 @@ function showErrorMessage() {
       showError = true;
       minutesErrorMessage.classList.remove('hidden');
     }
-    if(secondsInput.value === '' || secondsInput.value === '0') {
+    if(secondsInput.value === '' || secondsInput.value === '0' && minutesInput.value === '0') {
       showError = true;
       secondsErrorMessage.classList.remove('hidden');
     }
@@ -170,7 +171,6 @@ function showTimer() {
     show(timerView);
     var id = Date.now();
     time = parseInt(minutesInput.value) * 60 + parseInt(secondsInput.value);
-    //step 2 parseInt so we do math on a number
     createTime();
     currentActivity = new Activity(category, accomplishInput.value, minutesInput.value, secondsInput.value, id);
     changeButtonColor();
@@ -181,7 +181,7 @@ function createTime() {
   var minutes = Math.floor(time / 60);
   var seconds = time % 60;
   var secondsColon = seconds < 10 ? '0' + seconds : seconds;
-  descriptionCountdown.innerHTML = ``
+  descriptionCountdown.innerHTML = ``;
   descriptionCountdown.innerHTML += `<p class="timer-category">${accomplishInput.value}</p><p class="timer-time">${minutes}:${secondsColon}</p>`
 };
 

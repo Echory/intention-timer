@@ -9,16 +9,15 @@ class Activity {
     this.timerId;
   }
   countdown() {
-    //begin a timer that counts down by seconds from input time
     this.timerId = setInterval(startTimer, 1000);
   }
+  
   markComplete() {
-    // when timer is done, change time display to say complete
+    this.completed = true;
   }
+
   saveToStorage() {
     var stringifiedArray = JSON.stringify(savedActivities);
     window.localStorage.setItem('array', stringifiedArray);
-
-    //when we click log activity, save to local storage
   }
 }
