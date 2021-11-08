@@ -1,5 +1,3 @@
-// When button is clicked, both icon and outline change color to indicate they have been selected
-
 //QUERY SELECTORS//
 var studyBtn = document.querySelector('.study');
 var meditateBtn = document.querySelector('.meditate');
@@ -31,14 +29,14 @@ var startTimerBtn = document.querySelector('.start-timer-button');
 var logActivityBtn = document.querySelector('.log-activity-btn');
 var savedActivitiesSection = document.querySelector('.no-activities');
 var createActivityBtn = document.querySelector('.create-new-activity')
-var createContainer = document.querySelector('.create-container')
-// Need to figure out how to target this line section
-var line = document.querySelector('.line')
+var createContainer = document.querySelector('.create-container');
+var line = document.querySelector('.line');
 
 var currentActivity = new Activity();
 var savedActivities = [];
 var time = 0;
 var category;
+
 //EVENT LISTENERS//
 studyBtn.addEventListener('click', activateColorStudy);
 meditateBtn.addEventListener('click', activateColorMeditate);
@@ -46,31 +44,54 @@ exerciseBtn.addEventListener('click', activateColorExercise);
 startActivityBtn.addEventListener('click', showTimer);
 startTimerBtn.addEventListener('click', callCountdown);
 logActivityBtn.addEventListener('click', logActivity);
+createActivityBtn.addEventListener('click', createNewActivity);
 window.addEventListener('DOMContentLoaded', retrieveArray);
-
+retrieveArray();
 
 //FUNCTIONS//
 function show(element) {
 element.classList.remove('hidden');
-}
+};
 
 function hide(element) {
 element.classList.add('hidden');
+};
+
+function clearInputs() {
+  accomplishInput.value = '';
+  minutesInput.value = '';
+  secondsInput.value = '';
 }
 
 function retrieveArray() {
   var retrievedArray = window.localStorage.getItem('array');
   var array = JSON.parse(retrievedArray)
-}
+  if(array.length >= 1) {
+    savedActivitiesSection.innerHTML = ``;
+  for (var i = 0; i < savedActivities.length; i++) {
+    savedActivitiesSection.innerHTML += `<section class= "saved-container">
+    <article class="saved-info">
+      <p class= "saved-category">${savedActivities[i].category}</p>
+      <p class="saved-time">${savedActivities[i].minutes} MIN ${savedActivities[i].seconds} SECONDS</p>
+      <p class="saved-description">${savedActivities[i].description}</p>
+    </article>
+    <article class="line-container">
+      <div class="line line-${savedActivities[i].category}"></div>
+    </article>
+  </section>`
+  }
+  }
+  savedActivities = array;
+};
 
-// function createActivityDisplay() {
-//   savedActivities.push(currentActivity);
-//   currentActivity.saveToStorage();
-//   retrieveArray();
-// }
+function createNewActivity() {
+  hide(timerView);
+  hide(createContainer);
+  show(formView);
+  clearInputs();
+};
 
 function logActivity() {
-  // createActivityDisplay();
   savedActivities.push(currentActivity);
   savedActivitiesSection.innerHTML = ``;
   for (var i = 0; i < savedActivities.length; i++) {
@@ -84,10 +105,11 @@ function logActivity() {
       <div class="line line-${savedActivities[i].category}"></div>
     </article>
   </section>`
+  currentActivity.saveToStorage();
   hide(timerView);
   show(createContainer);
   }
-}
+};
 
 function startTimer() {
   time--;
@@ -105,12 +127,11 @@ function startTimer() {
     startTimerBtn.innerHTML = `<button class="red-button complete">SLAY QUEEN!</button>`
     show(logActivityBtn)
   }
-}
+};
 
-//step 4 create function that will call coundown so it doesnt keep firing if we call it directly in the other function
 function callCountdown() {
   currentActivity.countdown();
-}
+};
 
 function showErrorMessage() {
   var showError = false
@@ -123,12 +144,12 @@ function showErrorMessage() {
       showError = true;
       minutesErrorMessage.classList.remove('hidden');
     }
-    if(secondsInput.value === '') {
+    if(secondsInput.value === '' || secondsInput.value === '0') {
       showError = true;
       secondsErrorMessage.classList.remove('hidden');
     }
     return showError
-}
+};
 
 function changeButtonColor() {
   if(category === studyBtn.value) {
@@ -140,7 +161,7 @@ function changeButtonColor() {
   if(category === exerciseBtn.value) {
     show(redBtn);
   }
-}
+};
 
 function showTimer() {
   event.preventDefault();
@@ -153,27 +174,27 @@ function showTimer() {
     createTime();
     currentActivity = new Activity(category, accomplishInput.value, minutesInput.value, secondsInput.value, id);
     changeButtonColor();
-    // savedActivities.push(currentActivity)
   }
-}
-// step 3 put all this in a function so we can call it in other funcs
+};
+
 function createTime() {
   var minutes = Math.floor(time / 60);
   var seconds = time % 60;
   var secondsColon = seconds < 10 ? '0' + seconds : seconds;
   descriptionCountdown.innerHTML = ``
   descriptionCountdown.innerHTML += `<p class="timer-category">${accomplishInput.value}</p><p class="timer-time">${minutes}:${secondsColon}</p>`
-}
+};
 
 function activateColorStudy() {
   event.preventDefault();
     category = studyBtn.value;
     studyBtnColor.innerHTML = ``;
-    studyBtnColor.innerHTML += `<div class="study-button"><button class="study" style= "border-color: #B3FD78">
+    studyBtnColor.innerHTML += `<div class="study-button"><button class="study" style="border-color: #B3FD78">
       <img class="study-plain hidden" src="assests/study.svg">
       <img class="study-active" src="assests/study-active.svg">
-      Study</button></div>`
-  }
+      <p style="color:#B3FD78">Study</p>
+      </button></div>`
+  };
 
   function activateColorMeditate() {
     event.preventDefault();
@@ -183,8 +204,9 @@ function activateColorStudy() {
     <button class="meditate" style= "border-color: #C278FD">
       <img class="meditate-plain hidden" src="assests/meditate.svg">
       <img class="meditate-active " src="assests/meditate-active.svg">
-      Meditate</button></div>`
-  }
+      <p style="color:#C278FD">Meditate</p>
+      </button></div>`
+  };
 
   function activateColorExercise() {
     event.preventDefault();
@@ -194,7 +216,7 @@ function activateColorStudy() {
     <button class="exercise" style= "border-color: #FD8078">
       <img class="exercise-plain hidden" src="assests/exercise.svg">
       <img class="exercise-active" src="assests/exercise-active.svg">
-    Exercise
-  </button>
-  </div>`
-  }
+      <p style="color:#FD8078">Exercise</p>
+    </button>
+   </div>`
+  };
