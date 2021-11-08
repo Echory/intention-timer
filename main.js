@@ -92,6 +92,7 @@ function createNewActivity() {
 };
 
 function logActivity() {
+  currentActivity.markComplete();
   savedActivities.push(currentActivity);
   savedActivitiesSection.innerHTML = ``;
   for (var i = 0; i < savedActivities.length; i++) {
